@@ -8,6 +8,7 @@ class Command(BaseCommand):
     help = "Create test SpyCats"
 
     def handle(self, *args, **kwargs):
+        SpyCat.objects.all().delete()
         breeds = ["Siamese", "Persian", "Maine Coon", "Bengal"]
         for i in range(5):
             cat = SpyCat.objects.create(

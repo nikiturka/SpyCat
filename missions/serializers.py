@@ -59,7 +59,7 @@ class CreateMissionSerializer(serializers.ModelSerializer):
     Serializer class for creating Mission objects with nested targets and additional validation.
     """
     default_error_messages = {
-        "negative_salary": _("Salary must be greater than 0."),
+        "invalid_target_number": _("Mission should contain from 1 to 3 targets."),
     }
 
     targets = BaseTargetSerializer(many=True, write_only=True)
@@ -70,7 +70,7 @@ class CreateMissionSerializer(serializers.ModelSerializer):
 
     def validate_targets(self, value):
         if not (1 <= len(value) <= 3):
-            self.fail("negative_salary")
+            self.fail("invalid_target_number")
         return value
 
     def create(self, validated_data):
@@ -108,6 +108,9 @@ class UpdateMissionSerializer(serializers.ModelSerializer):
         fields = ['cat']
 
     def validate_cat(self, value):
+        if value is None:
+            return value
+
         active_missions = Mission.objects.filter(cat=value, completed=False)
         if self.instance:
             active_missions = active_missions.exclude(pk=self.instance.pk)

@@ -35,7 +35,7 @@ docker-compose run app python manage.py create_test_missions
 
 ### Run tests:
 ```shell
-docker-compose run app python manage.py test
+docker-compose run app pytest
 ```
 
 ### Create superuser for admin panel:
@@ -48,3 +48,5 @@ docker-compose run app python manage.py createsuperuser
 
 - **Docker-compose setup:** demonstrates Docker skills by containerizing the application in a separate app along with a PostgreSQL database.
 - **Tests:** unit tests for core business logic are written using pytest.
+- Country field in Target model is currently implemented as a simple `CharField`. Potentially, it could be extracted into a separate model or even a 
+dedicated application, if more business logic will be associated with countries in the future.

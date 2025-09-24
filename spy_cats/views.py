@@ -19,6 +19,8 @@ class SpyCatRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     APIView for retrieving and updating Spy Cat instances.
     """
+    http_method_names = ["get", "patch", "delete"]
+
     def get_object(self):
         return get_object_or_404(SpyCat, pk=self.kwargs['pk'])
 

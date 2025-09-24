@@ -27,6 +27,8 @@ class MissionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView)
     """
     APIView for retrieving and updating Mission object.
     """
+    http_method_names = ["get", "patch", "delete"]
+
     def get_queryset(self):
         return Mission.objects.all()
 
@@ -40,6 +42,8 @@ class TargetUpdateAPIView(generics.UpdateAPIView):
     """
     APIView for updating Target objects.
     """
+    http_method_names = ["get", "patch", "delete"]
+
     def get_queryset(self):
         return Target.objects.all()
 

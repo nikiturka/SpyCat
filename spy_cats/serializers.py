@@ -46,11 +46,12 @@ class CreateSpyCatSerializer(UpdateSpyCatSerializer):
         fields = BaseSpyCatSerializer.Meta.fields
 
     def validate_breed(self, value):
-        response = requests.get("https://api.thecatapi.com/v1/breeds")
-        if response.status_code == 200:
+        try:
+            response = requests.get("https://api.thecatapi.com/v1/breeds")
+            response.raise_for_status()
             breeds = [breed["name"].lower() for breed in response.json()]
             if value.lower() not in breeds:
                 self.fail("breed_not_found", value=value)
-        else:
+        except requests.RequestException:
             self.fail("breed_api_failed")
         return value

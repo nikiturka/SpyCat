@@ -50,3 +50,4 @@ docker-compose run app python manage.py createsuperuser
 - **Tests:** unit tests for core business logic are written using pytest.
 - Country field in Target model is currently implemented as a simple `CharField`. Potentially, it could be extracted into a separate model or even a 
 dedicated application, if more business logic will be associated with countries in the future.
+- [Download / Open Postman collection](docs/postman_collection.json)

@@ -1,0 +1,203 @@
+{
+  "info": {
+    "name": "SpyCats API",
+    "_postman_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "description": "Collection of endpoints for SpyCats and Missions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "SpyCats",
+      "item": [
+        {
+          "name": "List SpyCats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/spy_cats/",
+              "host": ["{{baseUrl}}"],
+              "path": ["spy_cats", ""]
+            }
+          }
+        },
+        {
+          "name": "Create SpyCat",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tom\",\n  \"salary\": 1000,\n  \"breed\": \"Abyssinian\",\n  \"years_of_experience\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/spy_cats/",
+              "host": ["{{baseUrl}}"],
+              "path": ["spy_cats", ""]
+            }
+          }
+        },
+        {
+          "name": "Retrieve SpyCat",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/spy_cats/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["spy_cats", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Update SpyCat",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"salary\": 2000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/spy_cats/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["spy_cats", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Delete SpyCat",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/spy_cats/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["spy_cats", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Missions",
+      "item": [
+        {
+          "name": "List Missions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/missions/",
+              "host": ["{{baseUrl}}"],
+              "path": ["missions", ""]
+            }
+          }
+        },
+        {
+          "name": "Create Mission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cat\": 1,\n  \"targets\": [\n    {\"notes\": \"Target 1\", \"completed\": false},\n    {\"notes\": \"Target 2\", \"completed\": false}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/missions/",
+              "host": ["{{baseUrl}}"],
+              "path": ["missions", ""]
+            }
+          }
+        },
+        {
+          "name": "Retrieve Mission",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/missions/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["missions", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Update Mission (assign cat)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cat\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/missions/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["missions", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Delete Mission",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/missions/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["missions", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Targets",
+      "item": [
+        {
+          "name": "Update Target",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Updated target note\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/missions/targets/1/",
+              "host": ["{{baseUrl}}"],
+              "path": ["missions", "targets", "1", ""]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000/v1/api"
+    }
+  ]
+}
